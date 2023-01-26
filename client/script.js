@@ -93,7 +93,7 @@ const handleSubmit = async(e) =>{
   //fetsh data from server
 
 console.log( '**************' + data.get('prompt'));
-  const response = await fetch('http://localhost:5000',{
+    const response = await fetch('https://codex-k9c6.onrender.com',{
     method: 'POST',
     headers : {
       'Content-Type' : 'application/json'
