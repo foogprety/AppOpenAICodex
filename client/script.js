@@ -38,6 +38,19 @@ function generateUniqueId(){
   return `id-${timestamp}-${hexadecimanString}` 
 }
 
+// Détection de l'événement de défilement
+window.onscroll = function() {
+
+  // Récupération de la hauteur de la page
+  var pageHeight = document.body.scrollHeight;
+  // Récupération de la position actuelle de la barre de défilement
+  var currentScrollPosition = window.pageYOffset;
+  // Si la position de la barre de défilement est égale à la hauteur de la page, défiler jusqu'en bas
+  if (currentScrollPosition === pageHeight) {
+      chatContainer.scrollTo(0, pageHeight);
+  }
+};
+
 function chatStripe(isAi,value,uniqueId){
   return (
   `
@@ -64,6 +77,7 @@ const handleSubmit = async(e) =>{
  chatContainer.innerHTML += chatStripe(false,data.get('prompt'));
 
  form.reset();
+
 
  //bot chatstriper
  const uniqueId = generateUniqueId();
